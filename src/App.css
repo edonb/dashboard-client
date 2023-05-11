@@ -90,12 +90,11 @@ hr {
 }
 
 .crypto-box {
-display: flex;
-align-items: center;
-width: 60%;
-margin: 0 auto;
-height: 0rem;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 0rem;
 }
 
 .card {
@@ -106,8 +105,9 @@ height: 0rem;
   background-color: #1d1d1d;
   border-radius: 1rem;
   margin-left: 1rem;
-  min-width: 12rem;
-  max-width: 10rem;
+  margin-right: 1rem;
+  min-width: 8rem;
+  max-width: 9rem;
 }
 
 .card h2 {
@@ -259,7 +259,7 @@ color: blue;
   .card {
     margin-right: 10px;
   }
-  .weather-marquee {
+  .weather-items {
     overflow: hidden;
     position: relative;
     height: 100px;
