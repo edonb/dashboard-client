@@ -11,7 +11,7 @@ function App() {
   const [usdNok, setUsdNok] = useState(null);
   const [eurNok, setEurNok] = useState(null);
 
-  const serverUrl = "http://192.168.0.162:5000";
+  const serverUrl = "http://192.168.1.165:5000";
   const cryptoApiUrl = `${serverUrl}/crypto`;
   const exchangeApiUrl = `${serverUrl}/exchange`;
 
