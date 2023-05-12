@@ -1,28 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import "./Weather.css"
 
-
-
-
 function Weather({ serverUrl }) {
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState([]);
 
   useEffect(() => {
     const fetchWeather = async () => {
-      const locations = ['sarpsborg', 'oslo', 'copenhagen', 'nice', 'monaco'];
-      const fetchPromises = locations.map(location =>
-        fetch(`${serverUrl}/weather/${location}`)
-          .then(response => response.json())
-          .then(data => ({ location, data }))
-      );
-      const weatherData = await Promise.all(fetchPromises);
-      const weatherObj = weatherData.reduce((obj, item) => {
-        obj[item.location] = item.data;
-
-        return obj;
-      }, {});
-
-      setWeather(weatherObj);
+      const response = await fetch(`${serverUrl}/weather`);
+      const data = await response.json();
+      setWeather(data);
     };
 
     fetchWeather();
@@ -129,19 +115,18 @@ function Weather({ serverUrl }) {
   };
   
 
-  if (!Object.keys(weather).length) return <div>Loading weather...</div>;
+  if (!weather.length) return <div>Loading weather...</div>;
   
   return (
-<div className="weather-items">
-  {Object.keys(weather).map(location => (
-    <div className="weather-item" key={location}>
-      <h2>{capitalizeFirstLetter(location)}</h2>
-      <>{weather[location].temperature}°C </>
-      {weather[location].symbolCode ? getWeatherIcon(weather[location].symbolCode) : 'NaN'}
+    <div className="weather-items">
+      {weather.map(item => (
+        <div className="weather-item" key={item.name}>
+          <h2>{item.name}</h2>
+          <>{item.temperature}°C </>
+          {item.symbolCode ? getWeatherIcon(item.symbolCode) : 'NaN'}
+        </div>
+      ))}
     </div>
-  ))}
-</div>
-
   );
 }
 

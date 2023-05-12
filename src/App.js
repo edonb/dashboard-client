@@ -4,14 +4,13 @@ import Weather from './components/Weather';
 import News from './components/News';
 import Greet from './components/Greet';
 import Crypto from './components/Crypto';
-import ExchangeRate from './components/ExchangeRate';
 import Radio from './components/Radio';
 
 function App() {
   const [usdNok, setUsdNok] = useState(null);
   const [eurNok, setEurNok] = useState(null);
 
-  const serverUrl = "http://192.168.1.165:5000";
+  const serverUrl = "http://192.168.0.162:5000";
   const cryptoApiUrl = `${serverUrl}/crypto`;
   const exchangeApiUrl = `${serverUrl}/exchange`;
 
@@ -43,7 +42,6 @@ function App() {
           <Radio />
           <div className='crypto-box'>
             <Crypto serverUrl={serverUrl} />
-            <ExchangeRate serverUrl={serverUrl} />
           </div>
           <div className='weather-marquee'>
             <Weather serverUrl={serverUrl} />
