@@ -121,7 +121,7 @@ function Weather({ serverUrl }) {
     <div className="weather-items">
       {weather.map(item => (
         <div className="weather-item" key={item.name}>
-          <h2>{item.name}</h2>
+          <h2>{capitalizeFirstLetter(item.name)}</h2>
           <>{item.temperature}°C </>
           {item.symbolCode ? getWeatherIcon(item.symbolCode) : 'NaN'}
         </div>
